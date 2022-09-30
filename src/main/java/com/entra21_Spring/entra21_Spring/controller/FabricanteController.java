@@ -59,4 +59,19 @@ public class FabricanteController {
 		Fabricante fabricante = fabricanteRepository.saveAndFlush(f);
 		return new ResponseEntity<Fabricante>(fabricante, HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/buscarFabricanteOrigem")
+	@ResponseBody
+	public ResponseEntity<List<Fabricante>> buscarFabricanteOrigem(@RequestParam(name="origem") String origem) {
+		List<Fabricante> f = fabricanteRepository.findByOrigem(origem);
+		return new ResponseEntity<List<Fabricante>>(f, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/buscarFabricanteNomeLike")
+	@ResponseBody
+	public ResponseEntity<List<Fabricante>> buscarFabricanteNomeLike(@RequestParam(name="nome") String nome) {
+		List<Fabricante> f = fabricanteRepository.findByNomeLike(nome.trim().toUpperCase());
+		return new ResponseEntity<List<Fabricante>>(f, HttpStatus.OK);
+	}
+	
 }
