@@ -16,4 +16,7 @@ public interface FabricanteRepository extends JpaRepository<Fabricante, Long>{
 	
 	@Query(value = "select f from Fabricante f where upper (trim(f.nome)) like %?1%")
 	List<Fabricante> findByNomeLike(String nome);
+	
+	@Query(value = "select count(*) from Fabricante")
+	Integer quantidadeFabricante(); 
 }

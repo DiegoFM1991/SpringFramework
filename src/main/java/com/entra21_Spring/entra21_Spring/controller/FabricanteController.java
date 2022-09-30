@@ -74,4 +74,11 @@ public class FabricanteController {
 		return new ResponseEntity<List<Fabricante>>(f, HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/quantidadeFabricante")
+	@ResponseBody
+	public ResponseEntity<Integer> quantidadeFabricante() {
+		Integer quantidade = fabricanteRepository.quantidadeFabricante();
+		return new ResponseEntity<Integer>(quantidade, HttpStatus.OK);
+	}
+	
 }
